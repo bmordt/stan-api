@@ -52,11 +52,11 @@ func main() {
 func initEnvVariables() {
 	portNum = GetAPIPort()
 	if strings.Compare(portNum, "") == 0 {
-		logger.Fatalf("Server Port env \"APIPORT\" variable is not set: %s", portNum)
+		logger.Fatalf("Server Port env \"PORT\" variable is not set: %s", portNum)
 	}
 }
 
 //GetAPIPort gets the api port from env
 func GetAPIPort() string {
-	return os.Getenv("APIPORT")
+	return os.Getenv("PORT")
 }
