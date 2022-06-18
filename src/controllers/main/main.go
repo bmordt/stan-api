@@ -44,6 +44,7 @@ func main() {
 	muxrouter.HandleFunc("/", articleService.FilterStanJson).Methods("POST")
 
 	//Router end
+	logger.Infof("Server listening on port %s", portNum)
 	logger.Fatalf("%v", http.ListenAndServe(":"+portNum, muxrouter))
 }
 
