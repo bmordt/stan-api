@@ -36,6 +36,12 @@ func (s *StanService) FilterStanJson(w http.ResponseWriter, r *http.Request) {
 		apiError.ApiError(w, http.StatusBadRequest, errMsg)
 		return
 	}
+	if len(stanReq.Payload) < 1 {
+		errMsg := fmt.Sprintf("Could not decode request: Payload is empty")
+		s.Logger.Errorf("FilterStanJson :: %v", errMsg)
+		apiError.ApiError(w, http.StatusBadRequest, errMsg)
+		return
+	}
 	s.Logger.Infof("FilterStanJson :: Incoming stan filter request: %+v", stanReq)
 
 	//Filter out
